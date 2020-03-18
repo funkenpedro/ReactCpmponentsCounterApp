@@ -1,28 +1,9 @@
-/*
-
-in index.js the ReactDOM.render renders a single component but you can 
-build a tree of components under  that that will be rendered.
-
-
-
-++++++++++++++++++++++++++++++++
-composing components
-++++++++++++++++++++++++++++++
-we have an app that renders a counter component
-one component 
-instead create a counters component and render that in index.js
-in that, you can render several counter components
-
-possible to create an array of counter objects in Counters.state
-then render this.state.counters.map(counter => <Counter key={counter._id}>)
-*/
-
 import React, { Component } from "react";
 import { myFunction } from "./justTesting";
 
 class Counter extends Component {
   state = {
-    count: 0
+    count: this.props.value
   };
   incrementCounter = () => {
     this.setState({ count: this.state.count + 1 });
@@ -32,6 +13,7 @@ class Counter extends Component {
     console.log(argument);
   };
   render() {
+    console.log(this.props);
     return (
       <div>
         <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
