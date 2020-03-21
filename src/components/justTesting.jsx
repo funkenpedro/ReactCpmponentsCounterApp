@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-class justTesting extends Component {
+import Counter from "./counter";
+class JustTesting extends Component {
   state = {};
   render() {
-    return null;
+    return <Counter />;
   }
 }
 
@@ -10,4 +11,4 @@ export function myFunction() {
   return "myFunction String";
 }
 
-export default justTesting;
+export default JustTesting;
