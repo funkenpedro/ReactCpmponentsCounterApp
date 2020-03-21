@@ -22,8 +22,11 @@ class Counters extends Component {
           <Counter
             key={counter.id}
             onDelete={this.handleDelete}
-            value={counter.value}
-            id={counter.id}
+            counter={counter} // passing the whole object as a prop instead of the objects state properties below
+            //value={counter.value}
+            //id={counter.id}
+            // this will require an update in the call from the other object
+            // for instance in counter.jsx change this.props.id to this.props.counter.id
           />
         ))}
       </div>
