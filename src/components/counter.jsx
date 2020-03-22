@@ -2,13 +2,20 @@ import React, { Component } from "react";
 import { myFunction } from "./justTesting";
 
 class Counter extends Component {
-  state = {
-    count: this.props.counter.value
-  };
-  incrementCounter = () => {
-    this.setState({ count: this.state.count + 1 });
-    console.log(this.state.count);
-  };
+  //state = {
+  //  count: this.props.counter.value
+  //};
+
+  // removing the state to make this a "Controlled Component"
+  // so that the state only has one source of information
+
+  //incrementCounter = () => {
+  //  this.setState({ count: this.state.count + 1 });
+  //  console.log(this.state.count);
+  //};
+  // deleting this function because it refers to this.state
+  // creating an onincrement function in counters to handle the increment click
+
   passAnArgument = argument => {
     console.log(argument);
   };
@@ -17,8 +24,9 @@ class Counter extends Component {
     return (
       <div>
         <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
+
         <button
-          onClick={this.incrementCounter}
+          onClick={() => this.props.onIncrement(this.props.counter)}
           className="btn btn-scondary btn-sm"
         >
           Increment
@@ -36,12 +44,12 @@ class Counter extends Component {
     );
   }
   formatCount() {
-    const { count } = this.state;
-    return count === 0 ? "Zero" : count;
+    const { value } = this.props.counter;
+    return value === 0 ? "Zero" : value;
   }
   getBadgeClasses() {
     let classes = "badge m-2 badge-";
-    classes += this.state.count === 0 ? "warning" : "primary";
+    classes += this.props.counter.value === 0 ? "warning" : "primary";
     return classes;
   }
 }

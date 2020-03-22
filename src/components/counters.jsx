@@ -23,6 +23,15 @@ class Counters extends Component {
     const counters = this.state.counters.filter(c => c.id !== counterId);
     this.setState({ counters: counters });
   };
+  handleIncrement = counter => {
+    console.log("Increment handler called", counter);
+    const counters = [...this.state.counters]; // copy of counters array, with original counter objects inside
+    const index = counters.indexOf(counter);
+    counters[index] = { ...counter }; // copy of contents of counter object desired
+    counters[index].value++;
+    console.log(this.state.counters[index]);
+    this.setState({ counters: counters }); // overwrite original state object
+  };
   render() {
     return (
       <div>
@@ -36,6 +45,7 @@ class Counters extends Component {
           <Counter
             key={counter.id}
             onDelete={this.handleDelete}
+            onIncrement={this.handleIncrement}
             counter={counter} // passing the whole object as a prop instead of the objects state properties below
             //value={counter.value}
             //id={counter.id}
