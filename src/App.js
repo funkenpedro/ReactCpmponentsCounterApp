@@ -4,6 +4,7 @@ import "./App.css";
 import Counters from "./components/counters";
 import { render } from "@testing-library/react";
 import Navbar from "./components/navbar";
+
 class App extends Component {
   state = {
     counters: [
