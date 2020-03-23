@@ -37,6 +37,15 @@ class App extends Component {
     console.log(this.state.counters[index]);
     this.setState({ counters: counters }); // overwrite original state object
   };
+  handleDecrement = counter => {
+    console.log("Decrement handler called", counter);
+    const counters = [...this.state.counters]; // copy of counters array, with original counter objects inside
+    const index = counters.indexOf(counter);
+    counters[index] = { ...counter }; // copy of contents of counter object desired
+    counters[index].value--;
+    console.log(this.state.counters[index]);
+    this.setState({ counters: counters }); // overwrite original state object
+  };
   render() {
     return (
       <React.Fragment>
@@ -48,6 +57,7 @@ class App extends Component {
           onReset={this.handleReset}
           onDelete={this.handleDelete}
           onIncrement={this.handleIncrement}
+          onDecrement={this.handleDecrement}
         />
       </React.Fragment>
     );
