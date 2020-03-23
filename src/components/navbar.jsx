@@ -1,17 +1,18 @@
 import React, { Component } from "react";
-//Convert Stateless componnent to a Stateless Functional component use sfm in simple react snippets
-const Navbar = props => {
-  //class Navbar extends Component {
-  //  render() {
+
+//const Navbar = props => {    -changed this declaration to use destructured object properties
+const Navbar = ({ totalCounters }) => {
+  // totalCounters is part of props - destructured object
+
   return (
     <nav className="navbar navbar-light bg-light">
       <a className="navbar-brand" href="#">
         Navbar{" "}
         <span className="badge badge-pill badge-secondary  ">
-          {props.totalCounters}
+          {totalCounters}
         </span>
       </a>
-    </nav>
+    </nav> // removed props. from totalCounters
   );
   //}
 };
